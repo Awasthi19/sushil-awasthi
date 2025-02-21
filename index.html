@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushil Awasthi - Software Developer </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #1a0a0a; /* Darker background with slight red tone */
+        }
+
+        /* Full Screen Hero with Animation */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a0a0a;
+            z-index: -1;
+        }
+
+        .geometric-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="10" width="20" height="20" fill="rgba(255,64,64,0.1)"/><rect x="30" y="30" width="20" height="20" fill="rgba(255,64,64,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 0.5em;
+            color: #ff4040; /* Red accent for name */
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #ff8080; /* Lighter red tone for description */
+            margin-bottom: 2em;
+            animation: fadeInUp 1s ease 0.5s;
+            animation-fill-mode: backwards;
+        }
+
+        .hero-button {
+            background: #8b0000; /* Dark red for buttons */
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #4b0000; /* Even darker red on hover */
+        }
+
+        /* Navigation Icons (Professional Icons using Unicode or CSS) */
+        .nav-icons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-icon {
+            color: #fff;
+            font-size: 1.2em; /* Slightly smaller for a cleaner look */
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            font-family: 'FontAwesome', 'Arial'; /* Assuming FontAwesome or similar for icons */
+        }
+
+        .nav-icon:hover {
+            opacity: 1;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1a0a0a;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ff4040; /* Red accent for headings */
+            font-size: 2.5em;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller project cards */
+            gap: 20px; /* Reduced gap for tighter layout */
+        }
+
+        .project-card {
+            background: #2a1a1a; /* Darker red-toned background for cards */
+            padding: 15px; /* Reduced padding for smaller cards */
+            border-radius: 8px; /* Slightly smaller radius */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 64, 64, 0.2); /* Red shadow */
+        }
+
+        .project-card h3 {
+            color: #ff4040; /* Red accent for project titles */
+            margin-bottom: 10px;
+            font-size: 1.2em; /* Slightly smaller for compactness */
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px; /* Reduced gap for tighter layout */
+        }
+
+        .skill-item {
+            background: #8b0000; /* Dark red for skill tags */
+            color: white;
+            padding: 8px 16px; /* Smaller padding for compactness */
+            border-radius: 18px; /* Slightly smaller radius */
+            font-size: 0.9em; /* Smaller text for skills */
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 500px; /* Slightly smaller form */
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px; /* Reduced margin for compactness */
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px; /* Reduced padding */
+            border: 1px solid #8b0000; /* Red border */
+            border-radius: 4px;
+            background: #2a1a1a; /* Darker red-toned background */
+            color: #fff;
+        }
+
+        button {
+            background: #8b0000; /* Dark red for button */
+            color: white;
+            padding: 10px 20px; /* Reduced padding */
+            border: none;
+            border-radius: 22px; /* Slightly smaller radius */
+            cursor: pointer;
+            font-size: 1em; /* Smaller text */
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #4b0000; /* Darker red on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #8b0000; /* Dark red for chat button */
+            color: white;
+            padding: 8px 16px; /* Reduced padding */
+            border-radius: 18px; /* Slightly smaller radius */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Reduced gap */
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-button:hover {
+            background: #4b0000; /* Darker red on hover */
+        }
+
+        .chat-button img {
+            width: 25px; /* Smaller profile image */
+            height: 25px;
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .nav-icons {
+                top: 10px;
+                right: 10px;
+                gap: 10px;
+            }
+            .nav-icon {
+                font-size: 1em; /* Smaller icons on mobile */
+            }
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Even smaller on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-background">
+            <div class="geometric-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Sushil Awasthi</h1>
+            <p>Software Developer</p>
+            <p>I’m a web developer skilled in crafting websites and applications for small to medium-sized businesses. Whether you need a standout portfolio, a service listing, or a fully functional online store, I’ve got you covered.</p>
+            <button class="hero-button">About Me →</button>
+        </div>
+        <div class="nav-icons">
+            <span class="nav-icon">🌙</span> <!-- Moon (Dark Mode) -->
+            <span class="nav-icon">📞</span> <!-- Phone -->
+            <span class="nav-icon">✉️</span> <!-- Email -->
+            <span class="nav-icon">in</span> <!-- LinkedIn (text-based for simplicity) -->
+            <span class="nav-icon">🐦</span> <!-- Twitter -->
+            <span class="nav-icon">📷</span> <!-- Instagram -->
+            <span class="nav-icon">🐱</span> <!-- GitHub -->
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Latest Works</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Coding Practice & Contest Platform</h3>
+                <p>A full-stack web application built to provide coding challenges and contests, featuring real-time leaderboards and user authentication using JavaScript, HTML, CSS, and Next.js.</p>
+                <a href="#" style="color: #ff4040;">[Live Demo Link]</a>
+            </div>
+            <div class="project-card">
+                <h3>E-Commerce Platform</h3>
+                <p>A robust online store built with MERN stack, including product listings, shopping cart, and payment integration, optimized for small to medium-sized businesses.</p>
+                <a href="#" style="color: #ff4040;">[Live Demo Link]</a>
+            </div>
+            <div class="project-card">
+                <h3>Full-Stack Web Application for Schools & Corporations</h3>
+                <p>A custom web solution for educational institutions and corporate organizations, built using Python, Django, FastAPI, and DevOps tools like Docker and Jenkins for deployment and scaling.</p>
+                <a href="#" style="color: #ff4040;">[Live Demo Link]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">HTML</span>
+            <span class="skill-item">CSS</span>
+            <span class="skill-item">Next.js</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Django</span>
+            <span class="skill-item">FastAPI</span>
+            <span class="skill-item">Java</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">Jenkins</span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Chat Button -->
+    <div class="chat-button">
+        <img src="https://via.placeholder.com/25" alt="Profile">
+        Chat with us
+    </div>
+</body>
+</html>
